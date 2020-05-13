@@ -5,6 +5,7 @@
 #include "modelerdraw.h"
 #include "modelerglobals.h"
 #include <FL/gl.h>
+#include "ParticleSystem.h"
 
 #include "ModelObject.h"
 #include "ModelObject_Box.h"
@@ -78,7 +79,13 @@ void SampleModel::draw() {
 	setAmbientColor(.1f, .1f, .1f);
 	setDiffuseColor(COLOR_GREEN);
 
-	// global movement: push
+	// get the reference matrix before global translation
+	Mat4d mat;
+	glGetDoublev(GL_MODELVIEW_MATRIX, mat.n);
+	mat = mat.transpose();
+	mat = mat.inverse();
+
+	// global translation
 	glPushMatrix();
 	glScaled(
 		control_global_buffer[3],
@@ -90,11 +97,7 @@ void SampleModel::draw() {
 		control_global_buffer[2]);
 
 	// model
-	// Feature
-	// Example of Creating a Minecraft Man
-	// model_body.model();
-
-	model_body.model();
+	model_body.model(mat);
 
 	// global movement: pop
 	glPopMatrix();
@@ -152,6 +155,12 @@ int main() {
 	model_RLL.add(&model_RF, 0);
 	model_head.add(&model_torus, 0);
 
+	// particle system
+	ParticleSystem* particle_system = new ParticleSystem();
+	PointObject* model_point = particle_system->getPointObject();
+	model_point->setName("Particle");
+	model_RLA.add(model_point, 0);
+
 	// control
 	control_global_x.appendName("Global X");
 	control_global_y.appendName("Global Y");
@@ -167,10 +176,6 @@ int main() {
 	controls.push_back(&control_global_scale);
 	controls.push_back(&control_multi_action);
 
-	// Feature:
-	// can automatically add control widget
-	// but as it grab all the control widget, it wil be too messy and should only be used for debug
-	//
 	model_body.control(&controls);
 
 	control_size = (int)controls.size();
@@ -181,7 +186,7 @@ int main() {
 		control_table[i].SetVals(
 			control->getName()->c_str(),
 			control->getLimit_min(),
-			control->getLimit_max(), 
+			control->getLimit_max(),
 			(control->getLimit_max() - control->getLimit_max()) / 100,
 			control->getValue());
 		i++;
@@ -190,6 +195,7 @@ int main() {
 	// mainloop
     ModelerApplication::Instance()->Init(&createSampleModel, control_table, control_size);
 	ModelerApplication::Instance()->setExtCallback_slider(callback_valChanged);
+	ModelerApplication::Instance()->SetParticleSystem(particle_system);
 	return ModelerApplication::Instance()->Run();
 }
 

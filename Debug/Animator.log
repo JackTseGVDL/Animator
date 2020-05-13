@@ -1,32 +1,3 @@
 ﻿cl : command line warning D9035: option 'Gm' has been deprecated and will be removed in a future release
-  sample.cpp
-D:\LearningMaterial\2019_2020_Spring\COMP4411\Project\Project_4\AniSkelS20\sample.cpp(186,21): warning C4244: 'argument': conversion from 'GLdouble' to 'float', possible loss of data
-D:\LearningMaterial\2019_2020_Spring\COMP4411\Project\Project_4\AniSkelS20\sample.cpp(185,56): warning C4244: 'argument': conversion from 'GLdouble' to 'float', possible loss of data
-D:\LearningMaterial\2019_2020_Spring\COMP4411\Project\Project_4\AniSkelS20\sample.cpp(184,25): warning C4244: 'argument': conversion from 'GLdouble' to 'float', possible loss of data
-D:\LearningMaterial\2019_2020_Spring\COMP4411\Project\Project_4\AniSkelS20\sample.cpp(183,25): warning C4244: 'argument': conversion from 'GLdouble' to 'float', possible loss of data
-  modelerapp.cpp
-D:\LearningMaterial\2019_2020_Spring\COMP4411\Project\Project_4\AniSkelS20\modelerapp.cpp(41,2): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-D:\LearningMaterial\2019_2020_Spring\COMP4411\Project\Project_4\AniSkelS20\modelerapp.cpp(132,39): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  Generating Code...
-  Compiling...
-  modelerview.cpp
-  modelerui.cpp
-D:\LearningMaterial\2019_2020_Spring\COMP4411\Project\Project_4\AniSkelS20\modelerui.cpp(57,3): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-D:\LearningMaterial\2019_2020_Spring\COMP4411\Project\Project_4\AniSkelS20\modelerui.cpp(86,3): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-D:\LearningMaterial\2019_2020_Spring\COMP4411\Project\Project_4\AniSkelS20\modelerui.cpp(109,3): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-D:\LearningMaterial\2019_2020_Spring\COMP4411\Project\Project_4\AniSkelS20\modelerui.cpp(246,23): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-D:\LearningMaterial\2019_2020_Spring\COMP4411\Project\Project_4\AniSkelS20\modelerui.cpp(398,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\LearningMaterial\2019_2020_Spring\COMP4411\Project\Project_4\AniSkelS20\modelerui.cpp(399,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\LearningMaterial\2019_2020_Spring\COMP4411\Project\Project_4\AniSkelS20\modelerui.cpp(425,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\LearningMaterial\2019_2020_Spring\COMP4411\Project\Project_4\AniSkelS20\modelerui.cpp(437,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\LearningMaterial\2019_2020_Spring\COMP4411\Project\Project_4\AniSkelS20\modelerui.cpp(450,39): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\LearningMaterial\2019_2020_Spring\COMP4411\Project\Project_4\AniSkelS20\modelerui.cpp(460,35): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\LearningMaterial\2019_2020_Spring\COMP4411\Project\Project_4\AniSkelS20\modelerui.cpp(470,35): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\LearningMaterial\2019_2020_Spring\COMP4411\Project\Project_4\AniSkelS20\modelerui.cpp(561,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\LearningMaterial\2019_2020_Spring\COMP4411\Project\Project_4\AniSkelS20\modelerui.cpp(643,2): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-D:\LearningMaterial\2019_2020_Spring\COMP4411\Project\Project_4\AniSkelS20\modelerui.cpp(721,2): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-D:\LearningMaterial\2019_2020_Spring\COMP4411\Project\Project_4\AniSkelS20\modelerui.cpp(746,2): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-D:\LearningMaterial\2019_2020_Spring\COMP4411\Project\Project_4\AniSkelS20\modelerui.cpp(765,38): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-D:\LearningMaterial\2019_2020_Spring\COMP4411\Project\Project_4\AniSkelS20\modelerui.cpp(808,3): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  Generating Code...
-  Animator.vcxproj -> D:\LearningMaterial\2019_2020_Spring\COMP4411\Project\Project_4\AniSkelS20\.\Debug\modeler.exe
+  pointObj.cpp
+  Animator.vcxproj -> D:\LearningMaterial\2019_2020_Spring\COMP4411\Project\Project_4\Animator\.\Debug\modeler.exe

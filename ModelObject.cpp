@@ -1,3 +1,4 @@
+#include "mat.h"
 #include "ModelObject.h"
 
 
@@ -52,6 +53,11 @@ GLdouble* ModelObject::getRotation() {
 }
 
 
+Mat4d ModelObject::getMatrix() {
+	return matrix;
+}
+
+
 // TODO: currently no checking on tree structure
 bool ModelObject::add(ModelObject *child, uint32_t index) {
 	if (child == nullptr || index >= attach_size) return false;
@@ -68,6 +74,21 @@ void ModelObject::model() {
 
 
 void ModelObject::model(int32_t depth) {
+	Mat4d mat;
+	glGetDoublev(GL_MODELVIEW_MATRIX, mat.n);
+	mat = mat.transpose();
+	mat = mat.inverse();
+
+	model(mat, depth);
+}
+
+
+void ModelObject::model(Mat4d mat) {
+	model(mat, -1);
+}
+
+
+void ModelObject::model(Mat4d mat, int32_t depth) {
 	if (depth == 0) return;
 
 	// attachment rotation and translation
@@ -76,17 +97,22 @@ void ModelObject::model(int32_t depth) {
 	if (rotation[1] != 0) glRotated(rotation[1], 0, 1, 0);
 	if (rotation[2] != 0) glRotated(rotation[2], 0, 0, 1);
 
+	// get matrix
+	glGetDoublev(GL_MODELVIEW_MATRIX, matrix.n);
+	matrix = matrix.transpose();
+	matrix = mat * matrix;
+
 	// self
 	glPushMatrix();
 	modelSelf();
 	glPopMatrix();
 
 	// child
-	modelChild(depth);
+	modelChild(mat, depth);
 }
 
 
-void ModelObject::modelChild(int32_t depth) {
+void ModelObject::modelChild(Mat4d mat, int32_t depth) {
 	for (ModelObject* child : children) {
 		glPushMatrix();
 
@@ -103,7 +129,7 @@ void ModelObject::modelChild(int32_t depth) {
 		if (attach[child->attach_index]->getRotation()[1] != 0) glRotated(attach[child->attach_index]->getRotation()[1], 0, 1, 0);
 		if (attach[child->attach_index]->getRotation()[2] != 0) glRotated(attach[child->attach_index]->getRotation()[2], 0, 0, 1);
 
-		child->model(depth <= 0 ? depth : depth - 1);
+		child->model(mat, depth <= 0 ? depth : depth - 1);
 		glPopMatrix();
 	}
 }

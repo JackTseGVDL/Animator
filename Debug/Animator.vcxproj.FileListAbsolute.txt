@@ -1,1 +1,2 @@
 D:\LearningMaterial\2019_2020_Spring\COMP4411\Project\Project_4\AniSkelS20\Debug\modeler.exe
+D:\LearningMaterial\2019_2020_Spring\COMP4411\Project\Project_4\Animator\Debug\modeler.exe

@@ -3,6 +3,7 @@
 
 
 #include <vector>
+#include <list>
 #include "Particle.h"
 #include "ModelObject.h"
 
@@ -10,26 +11,24 @@
 class PointObject : public ModelObject {
 
 protected:
-	std::vector<Particle>		particles;
-	Vec3<float>					force;
-	GLdouble					count;  // particle number
+	std::list<Particle*>	*particles = nullptr;
+	GLdouble				emit;
 
 public:
+	PointObject();
+
 	// tree
 	bool add(ModelObject* child, uint32_t index) override;
 
 	// model
 	void modelSelf() override;
-	void modelChild(int32_t depth) override;
-	
+
 	// control
 	void controlSelf(std::vector<ModelControl*>* controls) override;
-	void controlChild(std::vector<ModelControl*>* controls, int32_t depth) override;
 
 	// particle
-	void setParticleCount	(int count);
-	void resetParticle		();
-	void updateParticle		(float interval);
+	void setParticles(std::list<Particle*> *particles);
+	GLdouble getEmitNumber();
 };
 
 

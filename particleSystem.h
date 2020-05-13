@@ -21,15 +21,38 @@
 #include "PointObj.h"
 
 
-class ParticleSystem {
+class ParticleFrame {
+public:
+	// Data
+	std::list<Particle*>	particles;
+	float				time;
 
+public:
+	// Operation Handling
+	void copy(ParticleFrame *frame) {
+		Particle* p = nullptr;
+		
+		for (auto* particle : frame->particles) {
+			p = new Particle();
+			p->position = particle->position;
+			p->velocity = particle->velocity;
+			particles.push_back(p);
+		}
+	}
+
+};
+
+
+class ParticleSystem {
 
 protected:
 	// Data
-	PointObject point_object;
+	PointObject						point_object;
+	std::vector<ParticleFrame*>		particle_frame;
+	ParticleFrame*					cur_frame;
 
 public:
-
+	// Operation Handling
 	/** Constructor **/
 	ParticleSystem();
 

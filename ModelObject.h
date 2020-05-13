@@ -5,14 +5,16 @@
 #include <FL/gl.h>
 #include <vector>
 #include "stdint.h"
+#include "vec.h"
+#include "mat.h"
 #include "ModelAttachment.h"
 #include "ModelControl.h"
 
 
 class ModelObject {
 
-// Data
 protected:
+	// Data
 	// geo
 	GLdouble origin[3] = { 0 };
 	GLdouble dimension[3] = { 1, 1, 1 };
@@ -20,6 +22,8 @@ protected:
 
 	ModelAttachment** attach = nullptr;
 	uint32_t attach_size = 0;  // number of attachment
+
+	Mat4d matrix;
 
 	// tree
 	uint32_t attach_index = 0;
@@ -29,8 +33,8 @@ protected:
 	// control
 	const char* name = "";
 
-// Operation
 public:
+	// Operation
 	ModelObject();
 
 	// geo
@@ -42,14 +46,18 @@ public:
 	GLdouble* getDimension();
 	GLdouble* getRotation();
 
+	Mat4d getMatrix();
+
 	// tree
 	virtual bool add(ModelObject *child, uint32_t index);
 
 	// model
 	void model();
+	void model(Mat4d mat);
 	void model(int32_t depth);
+	void model(Mat4d mat, int32_t depth);
 	virtual void modelSelf() = 0;
-	virtual void modelChild(int32_t depth);
+	virtual void modelChild(Mat4d mat, int32_t depth);
 
 	// control
 	void setName(const char* name);

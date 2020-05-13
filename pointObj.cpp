@@ -3,6 +3,16 @@
 
 
 // Operation Handling
+PointObject::PointObject():
+	ModelObject::ModelObject() {
+
+	// attachment
+	attach_size = 0;
+
+	// point object
+	emit = 1;
+}
+
 // tree
 // no child is allowed
 bool PointObject::add(ModelObject* child, uint32_t index) {
@@ -12,50 +22,25 @@ bool PointObject::add(ModelObject* child, uint32_t index) {
 
 // model
 void PointObject::modelSelf() {
-	for (auto& particle : particles) {
-		glPushMatrix();
-		glTranslated(
-			particle.position[0],
-			particle.position[1],
-			particle.position[2]);
-		drawSphere(1);
-		glPopMatrix();
-	}
-}
-
-
-// no child is allowed
-void PointObject::modelChild(int32_t depth) {
 	return;
 }
 
 
 // control
 void PointObject::controlSelf(std::vector<ModelControl*>* controls) {
-	ModelControl* control_0 = new ModelControl(&count, 0, 5);
+	ModelControl* control_0 = new ModelControl(&emit, 0, 20);
 	control_0->appendName(name);
 	control_0->appendName(": Count");
 	controls->push_back(control_0);
 }
 
 
-// no child is allowed
-void PointObject::controlChild(std::vector<ModelControl*>* controls, int32_t depth) {
-	return;
-}
-
-
 // particle
-void PointObject::setParticleCount(int count) {
-	this->count = (GLdouble)count;
+void PointObject::setParticles(std::list<Particle*> *particles) {
+	this->particles = particles;
 }
 
 
-void PointObject::resetParticle() {
-	for (auto& particle : particles) particle.reset();
-}
-
-
-void PointObject::updateParticle(float interval) {
-	for (auto& particle : particles) particle.update(interval, force);
+GLdouble PointObject::getEmitNumber() {
+	return emit;
 }

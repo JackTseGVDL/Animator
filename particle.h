@@ -7,16 +7,16 @@
 
 class Particle {
 public:
-	Vec3<float> position;
-	Vec3<float> velocity;
+	Vec3<double> position;
+	Vec3<double> velocity;
 
 public:
 	Particle() {
-		position = Vec3<float>();
-		velocity = Vec3<float>();
+		position = Vec3<double>();
+		velocity = Vec3<double>();
 	}
 
-	Particle(Vec3<float> pos, Vec3<float> velocity):
+	Particle(Vec3<double> pos, Vec3<double> velocity):
 		position(pos), velocity(velocity)
 	{}
 
@@ -30,14 +30,7 @@ public:
 
 	// update with no acceleration
 	void update(float interval) {
-		position += velocity * interval;
-	}
-
-
-	// update with acceleration
-	void update(float interval, Vec3<float> force) {
-		velocity += force;
-		update(interval);
+		position += velocity * (double)interval;
 	}
 };
 
